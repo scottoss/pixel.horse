@@ -1,0 +1,33 @@
+div(*ngIf="!playing")
+	.text-center.heading
+		img.pixelart.home-logo(revSrc="images/logo-large.png" alt="pixel.horse")
+
+	.mx-auto.home-content
+		page-loader
+
+		div(*ngIf="!loading")
+			h1.sr-only(focusTitle) Home
+
+			.form-group(*ngIf="authError")
+				.alert.alert-danger(role="alert")
+					| {{authError}}
+				.alert.alert-warning(role="alert" *ngIf="accountAlert")
+					| {{accountAlert}}
+
+			.form-group(*ngIf="!account")
+				sign-in-box((signIn)="signIn($event)")
+
+			div(*ngIf="!!account")
+				.form-group
+					discord-button
+					visit-pt-button
+				.form-group(*ngIf="canInstall")
+					install-button
+				.form-group
+					character-select([(error)]="error" [editButton]="true" (preview)="previewPony = $event")
+				.form-group
+					character-preview([pony]="previewInfo" [state]="state" [passive]="false" [name]="previewName" [tag]="previewTag")
+				.form-group.text-center
+					play-box([(error)]="error")
+
+				play-notice

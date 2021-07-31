@@ -1,0 +1,21 @@
+{
+	"name": "pixel.horse",
+	"short_name": "pixel.horse",
+	"start_url": "/",
+	"scope": "/",
+	"theme_color": "#5b6ee1",
+	"background_color": "#5b6ee1",
+	"display": "standalone",
+	"icons": [
+		{
+			"src": "/android-chrome-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "/android-chrome-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		}
+	]
+}

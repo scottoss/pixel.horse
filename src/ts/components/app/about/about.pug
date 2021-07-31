@@ -1,0 +1,63 @@
+h1(focusTitle) About
+
+.row.text-large
+	.col-lg-7
+		p.lead A Pony Town custom server
+
+		p This game is a derivative work based on  #[a(href="") Pony Town]. The developers of Pony Town are not responsible for it in any way.
+
+		h2 Contact
+		p For all inquiries please send an email to #[b {{contactEmail}}]
+			span(*ngIf="contactDiscord")
+				|  or message #[b {{contactDiscord}}] on Discord
+			| .
+
+		h2 Technology
+
+		p.
+			The entire game is written in #[a(href="http://www.typescriptlang.org/") TypeScript],
+			a typed superset of JavaScript that compiles to plain JavaScript.
+			Server side code is running on #[a(href="https://nodejs.org/en/") Node.js]
+			server with WebSockets for communication.
+			User interface is built using #[a(href="https://angular.io/") Angular]
+			framework and the game itself is using WebGL for rendering graphics.
+
+		div(*ngIf="credits.length")
+			h2 The Team
+
+			.mb-4
+				.row.team-members
+					.col-md-6(*ngFor="let c of credits")
+						.team-member
+							.team-avatar.float-left(
+								[style.background-image]="c.background"
+								[style.background-position]="c.position"
+								style="background-size: 328px 246px")
+							b.text-truncate.sno {{c.name}}
+							.text-muted {{c.title}}
+							site-links([links]="c.links")
+
+				//- small.text-muted
+					em avatars by #[a.text-muted(href="link") Name]
+
+		h2 Contributors
+
+		div(*ngFor="let g of contributors")
+			h3 {{g.group}}
+			p(*ngFor="let c of g.contributors")
+				strong {{c.name}}
+				span(*ngIf="c.links")
+					|  - 
+					site-links([links]="c.links")
+
+	.col-lg-5
+
+		h2 Changelog
+
+		div(*ngFor="let v of changelog")
+			h4 {{v.version}}
+			ul
+				li(*ngFor="let c of v.changes" [innerHTML]="c")
+
+.text-center.text-muted
+	.tinyface

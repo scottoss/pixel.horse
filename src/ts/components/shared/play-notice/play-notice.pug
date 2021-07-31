@@ -1,0 +1,12 @@
+.mx-auto.text-left.text-large(style="max-width: 400px;")
+	h5 General rules
+	ul.text-muted.list-rules
+		li(*ngFor="let r of rules") {{r}}
+	p.text-muted For more details about the rules, see our #[a(routerLink="/help" fragment="rules") Help page].
+	hr
+
+	h5 This is a Pony Town custom server
+	p.text-muted
+		| The developers of Pony Town are not responsible for this server or the contents on it in any way.
+	p.text-muted
+		| 
